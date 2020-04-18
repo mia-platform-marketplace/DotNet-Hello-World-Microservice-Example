@@ -5,7 +5,9 @@
 
 ## Summary
 
-Welcome to %CUSTOM_PLUGIN_SERVICE_DESCRIPTION% .NET Core 3.1 Microservice
+Welcome to %CUSTOM_PLUGIN_SERVICE_NAME% .NET Core 3.1 Microservice
+
+%CUSTOM_PLUGIN_SERVICE_DESCRIPTION%
 
 ## Notes
 

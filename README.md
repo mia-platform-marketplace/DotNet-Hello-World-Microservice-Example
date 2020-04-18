@@ -1,4 +1,4 @@
-# %CUSTOM_PLUGIN_SERVICE_DESCRIPTION%
+# %CUSTOM_PLUGIN_SERVICE_NAME%
 
 [![pipeline status][pipeline]][git-link]
 [![coverage report][coverage]][git-link]

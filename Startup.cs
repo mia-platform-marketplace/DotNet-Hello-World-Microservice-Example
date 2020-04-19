@@ -69,6 +69,7 @@ namespace HelloWorld
              app.UseSwagger(c =>
             {
                 c.RouteTemplate = "/{documentName}/json";
+                c.SerializeAsV2 = true;
             });
 
             // Register routes

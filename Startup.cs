@@ -14,18 +14,12 @@
  * limitations under the License.
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Mia.Env;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 // PLEASE NOTE: You don't need to modify this code. Just add a new Controller in Controllers folder
@@ -48,6 +42,8 @@ namespace HelloWorld
         {
             services.AddControllers();
 
+            services.Configure<EnvironmentConfiguration>(Configuration);
+
             // Enable swagger
             services.AddSwaggerGen(c =>
             {
@@ -66,11 +62,11 @@ namespace HelloWorld
             }
 
             // Enable OpenAPI Specification for Mia-Platform API Portal
-             app.UseSwagger(c =>
-            {
-                c.RouteTemplate = "/{documentName}/json";
-                c.SerializeAsV2 = true;
-            });
+            app.UseSwagger(c =>
+           {
+               c.RouteTemplate = "/{documentName}/json";
+               c.SerializeAsV2 = true;
+           });
 
             // Register routes
             app.UseRouting();

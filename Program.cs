@@ -14,13 +14,11 @@
  * limitations under the License.
  */
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Serilog;
+using Mia.Logging;
+using Serilog.Events;
 
 namespace HelloWorld
 {
@@ -28,7 +26,39 @@ namespace HelloWorld
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            try
+            {
+                var logLevel = Environment.GetEnvironmentVariable("LOG_LEVEL");
+                Log.Logger = GetLoggerConfiguration(logLevel)
+                    .WriteTo.Console(new MiaJsonFormatter())
+                    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                    .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
+                    .CreateLogger();
+                CreateHostBuilder(args).Build().Run();
+            }
+            catch (Exception e)
+            {
+                Log.Error(e, "Application start-up failed");
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
+        }
+
+        private static LoggerConfiguration GetLoggerConfiguration(string logLevel)
+        {
+            var logConfig = new LoggerConfiguration();
+
+            switch (logLevel)
+            {
+                case "ERROR": return logConfig.MinimumLevel.Error();
+                case "WARNING": return logConfig.MinimumLevel.Warning();
+                case "INFO": return logConfig.MinimumLevel.Information();
+                case "DEBUG": return logConfig.MinimumLevel.Debug();
+                case "TRACE": return logConfig.MinimumLevel.Verbose();
+                default: return logConfig.MinimumLevel.Information();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -36,6 +66,7 @@ namespace HelloWorld
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+                .UseSerilog();
     }
 }

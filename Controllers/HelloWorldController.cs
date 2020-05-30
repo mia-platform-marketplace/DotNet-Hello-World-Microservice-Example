@@ -13,13 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using HelloWorld.Models;
+using Serilog;
+using Microsoft.Extensions.Options;
+using Mia.Env;
 
 namespace HelloWorld.Controllers
 {
@@ -28,17 +27,19 @@ namespace HelloWorld.Controllers
     public class HelloWorldController : ControllerBase
     {
         private const string HELLO_ROUTE = "hello";
-        private readonly ILogger<HelloWorldController> _logger;
+        private string HELLO_NAME;
 
-        public HelloWorldController(ILogger<HelloWorldController> logger)
+        public HelloWorldController(IOptions<EnvironmentConfiguration> environmentConfiguration)
         {
-            _logger = logger;
+            HELLO_NAME = environmentConfiguration.Value.HELLO_NAME;
         }
 
         [HttpGet]
         public HelloWorldMessage Get()
         {
-            return new HelloWorldMessage();
+            Log.Information("Incoming call to {route}", HELLO_ROUTE);
+
+            return new HelloWorldMessage(HELLO_NAME);
         }
     }
 }

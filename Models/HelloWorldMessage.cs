@@ -19,7 +19,11 @@ namespace HelloWorld.Models
 {
     public class HelloWorldMessage
     {
-        public String Salutation => "Hello World";
+        public String Salutation { get; set; }
 
+        public HelloWorldMessage(string helloName)
+        {
+            Salutation = $"Hello {helloName}";
+        }
     }
 }

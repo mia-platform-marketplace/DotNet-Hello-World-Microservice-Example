@@ -6,12 +6,12 @@ ENV ASPNETCORE_URLS=http://*:3000
 
 ##########################################################################
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
-WORKDIR /src
+WORKDIR /src/HelloWorld
 
-COPY HelloWorld.csproj .
+COPY src/HelloWorld/HelloWorld.csproj .
 RUN dotnet restore HelloWorld.csproj
-COPY . .
-WORKDIR /src/.
+COPY src/HelloWorld/. .
+WORKDIR /src/HelloWorld/.
 RUN dotnet build "HelloWorld.csproj" -c Release -o /app/build
 
 ##########################################################################

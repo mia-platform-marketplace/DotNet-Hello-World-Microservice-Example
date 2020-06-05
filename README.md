@@ -1,11 +1,11 @@
-# %CUSTOM_PLUGIN_SERVICE_NAME%
+# mia_template_service_name_placeholder
 
 [![pipeline status][pipeline]][git-link]
 [![coverage report][coverage]][git-link]
 
 ## Summary
 
-Welcome to %CUSTOM_PLUGIN_SERVICE_NAME% .NET Core 3.1 Microservice
+Welcome to mia_template_service_name_placeholder .NET Core 3.1 Microservice
 
 %CUSTOM_PLUGIN_SERVICE_DESCRIPTION%
 

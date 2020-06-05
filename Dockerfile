@@ -20,8 +20,8 @@ RUN dotnet publish "HelloWorld.csproj" -c Release -o /app/publish
 
 ##########################################################################
 LABEL maintainer="%CUSTOM_PLUGIN_CREATOR_USERNAME%" \
-      name="%CUSTOM_PLUGIN_SERVICE_NAME%" \
-      description="%CUSTOM_PLUGIN_SERVICE_NAME%" \
+      name="mia_template_service_name_placeholder" \
+      description="mia_template_service_name_placeholder" \
       eu.mia-platform.url="https://www.mia-platform.eu" \
       eu.mia-platform.version="0.1.0" \
       eu.mia-platform.language="c#" \
@@ -32,7 +32,7 @@ FROM base AS final
 WORKDIR /app
 
 ARG COMMIT_SHA=<not-specified>
-RUN echo "%CUSTOM_PLUGIN_SERVICE_NAME%: $COMMIT_SHA" >> ./commit.sha
+RUN echo "mia_template_service_name_placeholder: $COMMIT_SHA" >> ./commit.sha
 
 COPY --from=publish /app/publish .
 

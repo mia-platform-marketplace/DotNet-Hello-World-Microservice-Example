@@ -35,8 +35,8 @@ dotnet run
 
 ## Notes
 
-[pipeline]: https://git.tools.mia-platform.eu/clients/mia-platform/demo/services/hellovodafone/badges/master/pipeline.svg
-[coverage]: https://git.tools.mia-platform.eu/clients/mia-platform/demo/services/hellovodafone/badges/master/coverage.svg
-[git-link]: https://git.tools.mia-platform.eu/clients/mia-platform/demo/services/hellovodafone/commits/master
+[pipeline]: %GITLAB_BASE_URL%/%CUSTOM_PLUGIN_PROJECT_FULL_PATH%/mia_template_service_name_placeholder/badges/master/pipeline.svg
+[coverage]: %GITLAB_BASE_URL%/%CUSTOM_PLUGIN_PROJECT_FULL_PATH%/mia_template_service_name_placeholder/badges/master/coverage.svg
+[git-link]: %GITLAB_BASE_URL%/%CUSTOM_PLUGIN_PROJECT_FULL_PATH%/mia_template_service_name_placeholder/commits/master
 
-[merge-request]: https://git.tools.mia-platform.eu/clients/mia-platform/demo/services/hellovodafone/merge_requests
+[merge-request]: %GITLAB_BASE_URL%/%CUSTOM_PLUGIN_PROJECT_FULL_PATH%/mia_template_service_name_placeholder/merge_requests

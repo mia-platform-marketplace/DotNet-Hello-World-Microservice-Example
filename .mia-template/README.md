@@ -12,6 +12,7 @@ To develop the service locally you need:
 
 To launch the service, run:
 ```shell
+cd src/mia_template_service_name_placeholder
 dotnet run
 ```
 

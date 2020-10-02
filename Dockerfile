@@ -8,15 +8,15 @@ ENV ASPNETCORE_URLS=http://*:3000
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
 
-COPY HelloWorld/HelloWorld.csproj .
+COPY src/HelloWorld/HelloWorld.csproj .
 RUN dotnet restore HelloWorld.csproj
 COPY . .
 WORKDIR /src/.
-RUN dotnet build "HelloWorld/HelloWorld.csproj" -c Release -o /app/build
+RUN dotnet build "src/HelloWorld/HelloWorld.csproj" -c Release -o /app/build
 
 ##########################################################################
 FROM build AS publish
-RUN dotnet publish "HelloWorld/HelloWorld.csproj" -c Release -o /app/publish
+RUN dotnet publish "src/HelloWorld/HelloWorld.csproj" -c Release -o /app/publish
 
 ##########################################################################
 LABEL maintainer="%CUSTOM_PLUGIN_CREATOR_USERNAME%" \

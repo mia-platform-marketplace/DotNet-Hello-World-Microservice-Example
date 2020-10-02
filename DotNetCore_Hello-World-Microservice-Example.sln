@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCore_Hello-World-Microservice-Example", "DotNetCore_Hello-World-Microservice-Example\DotNetCore_Hello-World-Microservice-Example.csproj", "{9D53D1B7-4EBA-4B9D-A3C4-4F17D943A805}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{9D53D1B7-4EBA-4B9D-A3C4-4F17D943A805}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
 
 COPY HelloWorld/HelloWorld.csproj .
-RUN dotnet restore HelloWorld/HelloWorld.csproj
+RUN dotnet restore HelloWorld.csproj
 COPY . .
 WORKDIR /src/.
 RUN dotnet build "HelloWorld/HelloWorld.csproj" -c Release -o /app/build

@@ -22,7 +22,7 @@ namespace DotNetCore_Hello_World_Microservice_Example
         {
             services.AddControllers();
             StartupUtils.ConfigureMiaLibraryServices(services, Configuration);
-            StartupUtils.ConfigureDocs(services, AppDomain.CurrentDomain.FriendlyName);
+            StartupUtils.ConfigureDocs(services, AppDomain.CurrentDomain.FriendlyName, "Hello world microservice API.");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

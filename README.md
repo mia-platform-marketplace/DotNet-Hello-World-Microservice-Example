@@ -55,4 +55,6 @@ you should see the following message:
 ```
 
 Congratulations! You have successfully learnt how to use our .NET Core Hello World Example on the DevOps Console!
+
+
 [github-actions]: https://github.com/mia-platform-marketplace/DotNet-Microservice-Template/actions

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DotNetCore_Hello_World_Microservice_Example.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("/")]
     public class HelloWorldController : ServiceStatusController
     {
         public HelloWorldController(MiaEnvConfiguration miaEnvConfiguration, ServiceClientFactory serviceClientFactory,

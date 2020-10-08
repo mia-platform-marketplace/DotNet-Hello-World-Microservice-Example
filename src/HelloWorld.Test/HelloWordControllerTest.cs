@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 using NFluent;
 using NUnit.Framework;
 
-namespace HelloWorld.Tests
+namespace HelloWorld.Test
 {
     public class HelloWorldControllerTest
     {

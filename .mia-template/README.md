@@ -53,7 +53,6 @@ docker run --name mia_template_service_name_placeholder \
   -e CLIENTTYPE_HEADER_KEY=${CLIENTTYPE_HEADER_KEY} \
   -e BACKOFFICE_HEADER_KEY=${BACKOFFICE_HEADER_KEY} \
   -e MICROSERVICE_GATEWAY_SERVICE_NAME=${MICROSERVICE_GATEWAY_SERVICE_NAME} \
-  -e CRUD_PATH=${CRUD_PATH} \
   -e LOG_LEVEL=trace \
   -p 3000:3000 \
   --detach \

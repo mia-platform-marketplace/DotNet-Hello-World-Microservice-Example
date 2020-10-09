@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace DotNetCore_Hello_World_Microservice_Example
 {
@@ -22,7 +23,12 @@ namespace DotNetCore_Hello_World_Microservice_Example
         {
             services.AddControllers();
             StartupUtils.ConfigureMiaLibraryServices(services, Configuration);
-            StartupUtils.ConfigureDocs(services, AppDomain.CurrentDomain.FriendlyName, "Hello world microservice API.");
+            StartupUtils.ConfigureDocs(services, new OpenApiInfo
+            {
+                Version = "v1",
+                Title = AppDomain.CurrentDomain.FriendlyName, 
+                Description = "Hello world microservice API."
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -27,8 +27,7 @@ namespace HelloWorld.Test
                 GROUPS_HEADER_KEY = "groups",
                 CLIENTTYPE_HEADER_KEY = "clienttype",
                 BACKOFFICE_HEADER_KEY = "isbackoffice",
-                MICROSERVICE_GATEWAY_SERVICE_NAME = "gateway-name",
-                CRUD_PATH = "crud-name"
+                MICROSERVICE_GATEWAY_SERVICE_NAME = "gateway-name"
             };
 
             _mockHeaderDictionary = new HeaderDictionary
@@ -38,8 +37,7 @@ namespace HelloWorld.Test
                 {"groups", "groups"},
                 {"clienttype", "client"},
                 {"isbackoffice", "true"},
-                {"gateway-name", "gateway"},
-                {"crud-name", "crud"},
+                {"gateway-name", "gateway"}
             };
             
             _httpContext = new DefaultHttpContext();;

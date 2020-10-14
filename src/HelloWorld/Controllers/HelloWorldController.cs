@@ -19,7 +19,7 @@ namespace DotNetCore_Hello_World_Microservice_Example.Controllers
         [HttpGet]
         public string Get()
         {
-            Logger.Info(HttpContext.Request, "info level message with no object");
+            Logger.Info(HttpContext.Request, "starting hello api");
             var miaHeadersPropagator = (MiaHeadersPropagator) HttpContext.Items["MiaHeadersPropagator"];
             return $"Hello {miaHeadersPropagator.GetUserId()}";
         }

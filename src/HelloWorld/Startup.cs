@@ -1,5 +1,6 @@
 using System;
 using MiaServiceDotNetLibrary;
+using MiaServiceDotNetLibrary.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -44,6 +45,8 @@ namespace DotNetCore_Hello_World_Microservice_Example
             app.Use(StartupUtils.RouteInjections(app));
 
             StartupUtils.UseSwagger(app);
+
+            app.UseRequestResponseLoggingMiddleware();
 
             app.UseRouting();
 

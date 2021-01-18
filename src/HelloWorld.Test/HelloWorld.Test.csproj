@@ -8,7 +8,7 @@
 
     <ItemGroup>
         <PackageReference Include="MiaServiceDotNetLibrary" Version="1.1.1" />
-        <PackageReference Include="Moq" Version="4.15.2" />
+        <PackageReference Include="Moq" Version="4.16.0" />
         <PackageReference Include="NFluent" Version="2.7.1" />
         <PackageReference Include="nunit" Version="3.13.0" />
         <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />

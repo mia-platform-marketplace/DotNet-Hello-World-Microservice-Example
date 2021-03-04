@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using DotNetCore_Hello_World_Microservice_Example.Controllers;
 using MiaServiceDotNetLibrary;
 using MiaServiceDotNetLibrary.Decorators;
@@ -9,9 +10,15 @@ using NUnit.Framework;
 
 namespace HelloWorld.Test
 {
+    class EnvsConfigurationsTest: MiaEnvsConfigurations
+    {
+        [Required]
+        [MinLength(5)]
+        public string MyCustomEnv { get; set; }
+    }
     public class HelloWorldControllerTest
     {
-        private MiaEnvConfiguration _mockMiaEnvConfig;
+        private EnvsConfigurationsTest _mockEnvsConfigurations;
         private ServiceClientFactory _mockServiceClientFactory;
         private DecoratorResponseFactory _mockDecoratorResponseFactory;
         private IHeaderDictionary _mockHeaderDictionary;
@@ -20,14 +27,15 @@ namespace HelloWorld.Test
         [SetUp]
         public void Setup()
         {
-            _mockMiaEnvConfig = new MiaEnvConfiguration
+            _mockEnvsConfigurations = new EnvsConfigurationsTest
             {
                 USERID_HEADER_KEY = "userid",
                 USER_PROPERTIES_HEADER_KEY = "userproperties",
                 GROUPS_HEADER_KEY = "groups",
                 CLIENTTYPE_HEADER_KEY = "clienttype",
                 BACKOFFICE_HEADER_KEY = "isbackoffice",
-                MICROSERVICE_GATEWAY_SERVICE_NAME = "gateway-name"
+                MICROSERVICE_GATEWAY_SERVICE_NAME = "gateway-name",
+                MyCustomEnv = "my-custom-env"
             };
 
             _mockHeaderDictionary = new HeaderDictionary
@@ -43,18 +51,18 @@ namespace HelloWorld.Test
             _httpContext = new DefaultHttpContext();;
 
             var miaHeadersPropagator =
-                new MiaHeadersPropagator(_mockHeaderDictionary, _mockMiaEnvConfig);
+                new MiaHeadersPropagator(_mockHeaderDictionary, _mockEnvsConfigurations);
             
             _httpContext.Items = new Dictionary<object, object> {{"MiaHeadersPropagator", miaHeadersPropagator}};
 
-            _mockServiceClientFactory = new ServiceClientFactory(_mockMiaEnvConfig);
+            _mockServiceClientFactory = new ServiceClientFactory(_mockEnvsConfigurations);
             _mockDecoratorResponseFactory = new DecoratorResponseFactory();
         }
 
         [Test]
         public void TestHelloWorld()
         {
-            var controller = new HelloWorldController(_mockMiaEnvConfig, _mockServiceClientFactory,
+            var controller = new HelloWorldController(_mockEnvsConfigurations, _mockServiceClientFactory,
                 _mockDecoratorResponseFactory) {ControllerContext = {HttpContext = _httpContext}};
             
             var result = controller.Get();

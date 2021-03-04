@@ -23,7 +23,8 @@ namespace DotNetCore_Hello_World_Microservice_Example
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            StartupUtils.ConfigureMiaLibraryServices(services, Configuration);
+            var envsConfigurations = new EnvsConfigurations();
+            StartupUtils.ConfigureMiaLibraryServices(services, Configuration, envsConfigurations);
             StartupUtils.ConfigureDocs(services, new OpenApiInfo
             {
                 Version = "v1",

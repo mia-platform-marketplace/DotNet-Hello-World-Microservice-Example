@@ -10,8 +10,8 @@ namespace DotNetCore_Hello_World_Microservice_Example.Controllers
     [Route("/")]
     public class HelloWorldController : ServiceStatusController
     {
-        public HelloWorldController(MiaEnvConfiguration miaEnvConfiguration, ServiceClientFactory serviceClientFactory,
-            DecoratorResponseFactory decoratorResponseFactory) : base(miaEnvConfiguration, serviceClientFactory,
+        public HelloWorldController(MiaEnvsConfigurations envsConfigurations, ServiceClientFactory serviceClientFactory,
+            DecoratorResponseFactory decoratorResponseFactory) : base(envsConfigurations, serviceClientFactory,
             decoratorResponseFactory)
         {
         }
